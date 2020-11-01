@@ -36,3 +36,20 @@
     transform: rotate(360deg);
   }
 }
+
+.field{
+  width:500px;
+  height:500px;
+  border-color: black;
+  border-style: solid;
+  border-width: thick;
+  position: relative;
+}
+
+.circle{
+  width: 10px;/*幅*/
+	height: 10px;/*高さ*/
+  border-radius: 50%;/*角丸*/
+  position: absolute;
+  background-color: black;
+}
