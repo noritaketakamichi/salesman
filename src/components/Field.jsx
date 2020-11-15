@@ -1,8 +1,7 @@
 
 import "./../App.css";
-import { useEffect } from "react";
 
-const start = [1,1,35,135];
+// const start = [1,1,35,135];
 
 function Field() {
   const location = require("./../location");
@@ -26,8 +25,6 @@ function Field() {
       {location.map((elm) => {
         const left = (elm[2]-25)*25;
         const bottom = 500-((elm[3] - 125)*25);
-        // const left = elm[2];
-        // const bottom = 500-elm[3];
 
         return (
         <circle className="circle" cx={left} cy={bottom} r="5" fill="red"></circle>
