@@ -7,22 +7,15 @@ function Field2(props) {
   const [location, setLocation] = useState([]);
   const [start, setStart] = useState([randomLoc(), randomLoc()]);
   const [goal, setGoal] = useState([randomLoc(), randomLoc()]);
-  // let start;
-  // let goal;
 
   useEffect(() => {
     // 位置を保存する配列
     let locArr = [];
-    // start = [randomLoc(), randomLoc()];
-    // locArr.push(start);
     for (let i = 0; i < props.showingPoints; i++) {
       locArr.push([randomLoc(), randomLoc()]);
     }
-    // goal = [randomLoc(), randomLoc()];
-    // locArr.push(goal);
-    console.log(locArr);
     setLocation(locArr);
-  }, []);
+  }, [props.showingPoints]);
 
   // 500✖︎500のフィールド
   return (

@@ -7,7 +7,7 @@ import Forms from './components/Forms.jsx'
 function App() {
 
   //表示するチェックポイントの数
-  const [showingPoints, setShowingPoints] = useState(20);
+  const [showingPoints, setShowingPoints] = useState(0);
 
   return (
     <div className="App">
