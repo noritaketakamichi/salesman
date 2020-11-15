@@ -1,27 +1,26 @@
-import logo from "./logo.svg";
-import "./App.css";
 
-const start = [0, "tokyo", 35.68944, 139.69167];
+import "./../App.css";
+import { useEffect } from "react";
 
-function App() {
-  const location = require("./location");
+const start = [1,1,35,135];
+
+function Field() {
+  const location = require("./../location");
   const result = [
-    11,  2,  3,  6,  7,  8,  9, 19, 24, 23, 27,
-    25, 26, 35, 31, 30, 32, 36, 42, 44, 43, 34,
-    28, 22, 21, 20, 17, 12, 10, 18, 14, 16, 29,
-    33, 38, 39, 40, 41, 37, 15, 13,  5,  4,  1,
-     0, 45
+    8, 7, 6, 5, 4,
+    3, 2, 1, 0
   ];
 
   let route=[]
 
-  for(let i=0;i< result.length-1;i++){
-    if(i!==result.length-1){
-        console.log(result[i+1]);
-        route.push([result[i],result[i+1]])
-    }
-  }
-
+//   useEffect(() => {
+      for(let i=0;i< result.length-1;i++){
+        if(i!==result.length-1){
+            console.log(result[i+1]);
+            route.push([result[i],result[i+1]])
+        }
+      }
+//   }, [])
   return (
     <svg className="field" viewBox="0 0 500 500">
       {location.map((elm) => {
@@ -56,4 +55,4 @@ function App() {
   );
 }
 
-export default App;
+export default Field;
