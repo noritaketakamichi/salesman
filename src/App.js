@@ -24,10 +24,6 @@ function App() {
       <Field />
       <Field2 showingPoints={showingPoints} caluculating={caluculating} iterations={iterations} setGenerationNum={setGenerationNum} setDistance={setDistance}/>
       <Forms setShowingPoints={setShowingPoints} setCaluculating={setCaluculating} setiterations={setiterations} generationNum={generationNum} distance={distance}/>
-      <p>（案）ボタン押したらランダムに位置が決まる</p>
-      <p>次にボタンを押したら最適化が始まる</p>
-      <p>スタートは常に隅または真ん中にする</p>
-      <p>ひとふでがき</p>
     </div>
   );
 }

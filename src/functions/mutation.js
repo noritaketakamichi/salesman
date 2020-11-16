@@ -6,8 +6,6 @@ const mutation = (arr) => {
 
     if (percentTmp <= probability) {
         //突然変異
-        // console.log("object");
-
         //4つ目の配列を突然変異させる
         const afterArr=exchange(arr);
 
@@ -17,10 +15,6 @@ const mutation = (arr) => {
         return arr;
     }
 }
-// for(let i=0;i<1000;i++){
-
-//     mutation();
-// }
 
 //配列の要素を入れ替え
 const exchange = (arr) => {
@@ -36,15 +30,11 @@ const exchange = (arr) => {
         }
     }
 
-    // console.log(firstNum);
-    // console.log(secondNum);
-
     //入れ替え
     let tmp = arr[firstNum];
     arr[firstNum] = arr[secondNum];
     arr[secondNum]=tmp;
 
-    // console.log(arr);
     return arr;
 }
 

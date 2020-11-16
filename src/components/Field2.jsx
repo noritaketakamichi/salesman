@@ -7,6 +7,7 @@ const { calcDistnceArr } = require("./../functions/calcDist");
 const { selection } = require("./../functions/selection");
 const { generateChildren } = require("./../functions/generateChildren");
 const { makeRoute } = require("./../functions/makeRoute");
+const { mutation } = require("./../functions/mutation");
 
 function Field2(props) {
   //表示するチェックポイントの位置の配列
@@ -31,11 +32,9 @@ function Field2(props) {
 
       //ランダムな経路を4つ作る
       let currentRouteArr = genetateInitialArr(location);
-      console.log(currentRouteArr);
 
       //距離を計算
       let distanceArr = calcDistnceArr(start, currentRouteArr, goal, location);
-      console.log(distanceArr);
 
       //遺伝のサイクルを回す
       for (let i = 0; i < props.iterations; i++) {
@@ -43,10 +42,10 @@ function Field2(props) {
         const SelectedRoutes = JSON.parse(
           JSON.stringify(selection(distanceArr))
         );
-        // console.log(SelectedRoutes);
         const parents = JSON.parse(
           JSON.stringify([SelectedRoutes[0][0], SelectedRoutes[1][0]])
         );
+
         /////////////////////////////
         //一番距離が短いやつを表示しよう//
         /////////////////////////////
@@ -57,8 +56,7 @@ function Field2(props) {
         //距離を表示
         props.setDistance(SelectedRoutes[0][1]);
 
-        let route=makeRoute(start,SelectedRoutes[0][0],goal,location)
-        console.log(route);
+        let route = makeRoute(start, SelectedRoutes[0][0], goal, location);
 
         //最短距離を設定
         setNearestRoute(route);
@@ -66,7 +64,10 @@ function Field2(props) {
         //一点交叉（切り離してくっつける）
         //2つの子供が生成される
         const children = generateChildren(SelectedRoutes);
-        // console.log(children);
+
+        //突然変異
+        //一定の確率で入れ替え
+        children[1]=mutation(children[1]);
 
         //次世代の4ルート
         const nextGen = [...parents, ...children];
@@ -74,7 +75,7 @@ function Field2(props) {
         distanceArr = calcDistnceArr(start, nextGen, goal, location);
 
         //少し待つ
-        await _sleep(100);
+        await _sleep(1);
       }
     }
   }, [props.showingPoints, props.caluculating]);
@@ -90,7 +91,6 @@ function Field2(props) {
         fill="green"
       ></circle>
       {location.map((pos) => {
-        console.log("hello");
         return (
           <circle
             className="circle"
