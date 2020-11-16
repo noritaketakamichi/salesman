@@ -4,11 +4,15 @@ import { useState } from "react";
 function Forms(props) {
   //チェックポイントの数
   const [checkPointsNum, setCheckPointsNum] = useState(0);
-  
 
   //フォームの入力が起こった時番号を保存
   const setPointsNumber = (e) => {
     setCheckPointsNum(e.target.value);
+  };
+
+  //【世代数】フォームの入力が起こった時番号を保存
+  const setGenNumber = (e) => {
+    props.setiterations(e.target.value);
   };
 
   //チェックポイントを表示
@@ -27,8 +31,8 @@ function Forms(props) {
         <input type="submit" value="配置する" onClick={setPoints} />
       </div>
       <div>
-        <input type="text" />
-        <input type="submit" value="開始" onClick={startCalc}/>
+        <input type="text" onChange={setGenNumber}/>
+        <input type="submit" value="開始" onClick={startCalc} />
       </div>
       {/* 現在の距離 */}
       <h1>{props.generationNum}</h1>

@@ -63,7 +63,7 @@ function Field2(props) {
         const nextGen = [...parents, ...children];
 
         distanceArr = calcDistnceArr(start, nextGen, goal, location);
-        await _sleep(2000);
+        await _sleep(1);
       }
     }
   }, [props.showingPoints, props.caluculating]);
