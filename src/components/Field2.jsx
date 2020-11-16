@@ -6,13 +6,14 @@ const { genetateInitialArr } = require("./../functions/generateArr");
 const { calcDistnceArr } = require("./../functions/calcDist");
 const { selection } = require("./../functions/selection");
 const { generateChildren } = require("./../functions/generateChildren");
+const { makeRoute } = require("./../functions/makeRoute");
 
 function Field2(props) {
   //表示するチェックポイントの位置の配列
   const [location, setLocation] = useState([]);
   const [start, setStart] = useState([-1, randomLoc(), randomLoc()]);
   const [goal, setGoal] = useState([-2, randomLoc(), randomLoc()]);
-  // const [generationNum, setGenerationNum] = useState(10);
+  const [nearestRoute, setNearestRoute] = useState([]);
 
   useEffect(async () => {
     //スリープ関数
@@ -46,13 +47,21 @@ function Field2(props) {
         const parents = JSON.parse(
           JSON.stringify([SelectedRoutes[0][0], SelectedRoutes[1][0]])
         );
-        //一番距離が短いやつを表示しよう
+        /////////////////////////////
+        //一番距離が短いやつを表示しよう//
+        /////////////////////////////
 
         //世代数を表示
         props.setGenerationNum(i);
 
         //距離を表示
         props.setDistance(SelectedRoutes[0][1]);
+
+        let route=makeRoute(start,SelectedRoutes[0][0],goal,location)
+        console.log(route);
+
+        //最短距離を設定
+        setNearestRoute(route);
 
         //一点交叉（切り離してくっつける）
         //2つの子供が生成される
@@ -63,7 +72,9 @@ function Field2(props) {
         const nextGen = [...parents, ...children];
 
         distanceArr = calcDistnceArr(start, nextGen, goal, location);
-        await _sleep(1);
+
+        //少し待つ
+        await _sleep(100);
       }
     }
   }, [props.showingPoints, props.caluculating]);
@@ -97,6 +108,16 @@ function Field2(props) {
         r="5"
         fill="blue"
       ></circle>
+
+      {/* 線 */}
+      {nearestRoute.map((elm) => {
+        const x1 = elm[0][1];
+        const y1 = elm[0][2];
+        const x2 = elm[1][1];
+        const y2 = elm[1][2];
+
+        return <line x1={x1} y1={y1} x2={x2} y2={y2} stroke="#000"></line>;
+      })}
     </svg>
   );
 }
