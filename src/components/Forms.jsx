@@ -4,23 +4,36 @@ import { useState } from "react";
 function Forms(props) {
   //チェックポイントの数
   const [checkPointsNum, setCheckPointsNum] = useState(0);
+  
 
   //フォームの入力が起こった時番号を保存
-  const setNumber = (e) => {
-    console.log(e.target.value);
+  const setPointsNumber = (e) => {
     setCheckPointsNum(e.target.value);
   };
 
+  //チェックポイントを表示
   const setPoints = () => {
     props.setShowingPoints(checkPointsNum);
-    console.log("object");
+  };
+
+  const startCalc = () => {
+    props.setCaluculating(true);
   };
 
   return (
-    <div>
-      <input type="text" onChange={setNumber} />
-      <input type="submit" value="配置する" onClick={setPoints} />
-    </div>
+    <>
+      <div>
+        <input type="text" onChange={setPointsNumber} />
+        <input type="submit" value="配置する" onClick={setPoints} />
+      </div>
+      <div>
+        <input type="text" />
+        <input type="submit" value="開始" onClick={startCalc}/>
+      </div>
+      {/* 現在の距離 */}
+      <h1>{props.generationNum}</h1>
+      <h1>{props.distance}</h1>
+    </>
   );
 }
 
