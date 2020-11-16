@@ -2,14 +2,22 @@
 //引数は4つのルート
 const mutation = (arr) => {
     const probability = 10;
-    const percentTmp = Math.random() * 100;
+    const firstPercent = Math.random() * 100;
 
-    if (percentTmp <= probability) {
+    if (firstPercent <= probability) {
         //突然変異
         //4つ目の配列を突然変異させる
         const afterArr=exchange(arr);
 
-        return afterArr;
+        const secondPercent = Math.random() * 100;
+
+        //稀に2つ入れ替えを起こす
+        if(secondPercent <= probability){
+            return exchange(afterArr);
+        }else{
+            return afterArr;
+        }
+
     } else {
         //突然変異じゃなければそのまま返す
         return arr;

@@ -21,7 +21,7 @@ function App() {
 
   return (
     <div className="App">
-      <Field />
+      {/* <Field /> */}
       <Field2 showingPoints={showingPoints} caluculating={caluculating} iterations={iterations} setGenerationNum={setGenerationNum} setDistance={setDistance}/>
       <Forms setShowingPoints={setShowingPoints} setCaluculating={setCaluculating} setiterations={setiterations} generationNum={generationNum} distance={distance}/>
     </div>

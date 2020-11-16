@@ -63,10 +63,17 @@ function Field2(props) {
 
         //一点交叉（切り離してくっつける）
         //2つの子供が生成される
-        const children = generateChildren(SelectedRoutes);
+        let children =[];
+        
+        //親子が一致している間は繰り返す
+        while(children.length===0||JSON.stringify([SelectedRoutes[0][0]])===JSON.stringify(children[0])||JSON.stringify([SelectedRoutes[0][0]])===JSON.stringify(children[1])){
+          children = generateChildren(SelectedRoutes);
+        }
 
         //突然変異
         //一定の確率で入れ替え
+
+        //いったん突然変異はなくします
         children[1]=mutation(children[1]);
 
         //次世代の4ルート
@@ -75,7 +82,7 @@ function Field2(props) {
         distanceArr = calcDistnceArr(start, nextGen, goal, location);
 
         //少し待つ
-        await _sleep(1);
+        await _sleep(0.1);
       }
     }
   }, [props.showingPoints, props.caluculating]);

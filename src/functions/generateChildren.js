@@ -13,8 +13,6 @@ const generateChildren = (SelectedRoutes) => {
     console.log(rand);
     const children = partialCrossing(father,mother,rand);
 
-    console.log(father);
-    console.log(mother);
     console.log(children);
 
     return children;
@@ -23,7 +21,7 @@ const generateChildren = (SelectedRoutes) => {
 
 //部分的交叉
 const partialCrossing=(father,mother,rand)=>{
-    for(let i=rand;i<father.length-1;i++){
+    for(let i=rand;i<father.length;i++){
         if(father[i]!==mother[i]){
             const exfather=JSON.parse(JSON.stringify(father))
             const exmother=JSON.parse(JSON.stringify(mother))
