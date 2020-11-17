@@ -7,7 +7,7 @@ const { calcDistnceArr } = require("./../functions/calcDist");
 const { selection } = require("./../functions/selection");
 const { generateChildren } = require("./../functions/generateChildren");
 const { makeRoute } = require("./../functions/makeRoute");
-const { mutation } = require("./../functions/mutation");
+const { mutation } = require("./../functions/mutation3");
 
 function Field2(props) {
   //表示するチェックポイントの位置の配列

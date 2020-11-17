@@ -8,7 +8,7 @@ const makeRoute = (start, routeArr, goal, location) => {
         output.push([location[routeArr[i]], location[routeArr[i + 1]]]);
     }
     output.push([location[routeArr[routeArr.length - 1]], goal]);
-    console.log(output);
+    // console.log(output);
     return output;
 }
 

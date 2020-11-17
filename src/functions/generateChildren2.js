@@ -5,15 +5,15 @@ const generateChildren = (SelectedRoutes) => {
 
     const father=SelectedRoutes[0][0];
     const mother=SelectedRoutes[1][0];
-    // console.log(father);
-    // console.log(mother);
+    console.log(father);
+    console.log(mother);
 
     //区切り位置の決定(0-末尾)
     const rand = Math.floor(Math.random()*(father.length));
-    // console.log(rand);
+    console.log(rand);
     const children = partialCrossing(father,mother,rand);
 
-    // console.log(children);
+    console.log(children);
 
     return children;
 

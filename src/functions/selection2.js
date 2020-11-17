@@ -1,18 +1,27 @@
-
+//どっちもルーレット選択
 //残す遺伝子の選択
 //一番距離が短いやつは必ず残す
 //残りの3つから1つをルーレット選択
 const selection = (arr) => {
 
-    // console.log("arr:",JSON.stringify(arr));
+    // console.log("hello");
 
     //距離の配列
     const distArr = [arr[0][1], arr[1][1], arr[2][1], arr[3][1]];
 
-    // console.log("distArr:",distArr);
+    //確率の配列
+    const probArr1 = getProbFromDist(distArr);
+    let sum1 = 0;
 
-    //4つの中からエリート選択
-    const firstChoiceNum = pickOneOfFour(distArr);
+    probArr1.forEach((elm) => {
+        sum1 += elm;
+    })
+
+    const rand1 = sum1 * Math.random();
+
+    //4つの中からルーレット選択
+    const firstChoiceNum = pickOneOfFour(probArr1, rand1);
+    // console.log(firstChoiceNum);
     const firstChoice = arr[firstChoiceNum];
 
     // console.log("firstChoiceNum:",firstChoiceNum);
@@ -26,7 +35,6 @@ const selection = (arr) => {
 
     //確率の配列
     const probArr2 = getProbFromDist(distArr2);
-    
     let sum2 = 0;
 
     probArr2.forEach((elm) => {
@@ -57,26 +65,16 @@ const getProbFromDist = (arr) => {
 }
 
 //4つから1つを選ぶ関数
-const pickOneOfFour = (arr) => {
-    //返す値
-    let num = 0;
-
-    let minDist = arr[0]
-
-    if (arr[1] < minDist) {
-        num = 1;
-        minDist = arr[1];
+const pickOneOfFour = (probArr, rand) => {
+    if (rand <= probArr[0]) {
+        return 0;
+    } else if (rand <= probArr[0] + probArr[1]) {
+        return 1;
+    } else if (rand <= probArr[0] + probArr[2]) {
+        return 2;
+    } else {
+        return 3;
     }
-    if (arr[2] < minDist) {
-        num = 2;
-        minDist = arr[2];
-    }
-    if (arr[3] < minDist) {
-        num = 3;
-        minDist = arr[3];
-    }
-
-    return num;
 }
 
 //3つから1つを選ぶ関数
