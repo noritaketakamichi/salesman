@@ -94,7 +94,7 @@ function Field2(props) {
         className="circle"
         cx={start[1]}
         cy={start[2]}
-        r="5"
+        r="10"
         fill="green"
       ></circle>
       {location.map((pos) => {
@@ -103,7 +103,7 @@ function Field2(props) {
             className="circle"
             cx={pos[1]}
             cy={pos[2]}
-            r="5"
+            r="10"
             fill="red"
           ></circle>
         );
@@ -112,7 +112,7 @@ function Field2(props) {
         className="circle"
         cx={goal[1]}
         cy={goal[2]}
-        r="5"
+        r="10"
         fill="blue"
       ></circle>
 
@@ -123,7 +123,7 @@ function Field2(props) {
         const x2 = elm[1][1];
         const y2 = elm[1][2];
 
-        return <line x1={x1} y1={y1} x2={x2} y2={y2} stroke="#000"></line>;
+        return <line x1={x1} y1={y1} x2={x2} y2={y2} stroke="#000" ></line>;
       })}
     </svg>
   );
