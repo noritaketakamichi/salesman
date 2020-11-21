@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import Field from './components/Field.jsx'
 import Field2 from './components/Field2.jsx'
 import Forms from './components/Forms.jsx'
-import img from './img/img.png';
+import img from './img/2.png';
 
 function App() {
 
@@ -24,7 +24,7 @@ function App() {
     <div className="App">
       {/* <Field /> */}
       <Field2 showingPoints={showingPoints} caluculating={caluculating} iterations={iterations} setGenerationNum={setGenerationNum} setDistance={setDistance}/>
-      <img src={img} width="500px"/>
+      <img src={img} width="700px"/>
       <Forms setShowingPoints={setShowingPoints} setCaluculating={setCaluculating} setiterations={setiterations} generationNum={generationNum} distance={distance}/>
     </div>
   );

@@ -35,7 +35,7 @@ function Forms(props) {
         <input type="submit" value="開始" onClick={startCalc} />
       </div>
       {/* 現在の距離 */}
-      <h1>世代数：{props.generationNum}</h1>
+      <h1>世代数：{props.generationNum+1}</h1>
       <h1>距離：{props.distance}</h1>
     </>
   );
